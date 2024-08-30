@@ -1,5 +1,5 @@
 let canvas;
-let character = new MovableObject();
+let character = new Character();
 
 function init() {
   canvas = document.getElementById("canvas");
