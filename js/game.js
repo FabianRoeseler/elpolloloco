@@ -4,11 +4,14 @@ let keyboard = new Keyboard();
 
 function init() {
   canvas = document.getElementById("canvas");
-  world = new World(canvas);
+  world = new World(canvas, keyboard);
 
   console.log("My character is", world.character);
 }
 
+/**
+ * Keyboard bindings: true when pressed down, false when let up
+ */
 window.addEventListener("keydown", (event) => {
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;
