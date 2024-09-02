@@ -54,6 +54,7 @@ class Character extends MovableObject {
         let path = this.IMAGES_WALKING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        this.world.camera_x = -this.x;
       }
     }, 1000 / 45);
 
@@ -66,6 +67,7 @@ class Character extends MovableObject {
         let path = this.IMAGES_WALKING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        this.world.camera_x = -this.x;
       }
     }, 1000 / 45);
   }
