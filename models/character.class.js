@@ -2,7 +2,7 @@ class Character extends MovableObject {
   height = 270;
   y = 160;
   x = 100;
-  speed = 10;
+  speed = 7;
 
   IMAGES_IDLE = [
     "../img/2_character_pepe/1_idle/idle/I-1.png",
@@ -26,6 +26,7 @@ class Character extends MovableObject {
     "img/2_character_pepe/2_walk/W-26.png",
   ];
   world;
+  walking_sound = new Audio("../audio/walk.mp3");
 
   constructor() {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
@@ -37,6 +38,7 @@ class Character extends MovableObject {
 
   /**
    * ANIMATIONS: Idle, Walking etc. with speed on intervals
+   * Walking sound start and end
    */
   idle() {
     setInterval(() => {
@@ -49,9 +51,11 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
+      this.walking_sound.pause();
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.x += this.speed;
         this.otherDirection = false;
+        this.walking_sound.play();
 
         let i = this.currentImage % this.IMAGES_WALKING.length;
         let path = this.IMAGES_WALKING[i];
@@ -65,6 +69,7 @@ class Character extends MovableObject {
       if (this.world.keyboard.LEFT && this.x > 100) {
         this.x -= this.speed;
         this.otherDirection = true;
+        this.walking_sound.play();
 
         let i = this.currentImage % this.IMAGES_WALKING.length;
         let path = this.IMAGES_WALKING[i];
