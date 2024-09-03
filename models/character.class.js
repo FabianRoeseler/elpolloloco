@@ -1,7 +1,8 @@
 class Character extends MovableObject {
   height = 270;
   y = 160;
-  speed = 10;
+  x = 0;
+  speed = 8;
 
   IMAGES_IDLE = [
     "../img/2_character_pepe/1_idle/idle/I-1.png",
@@ -30,21 +31,23 @@ class Character extends MovableObject {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_WALKING);
-
     this.animate();
+    this.idle();
   }
 
   /**
    * ANIMATIONS: Idle, Walking etc. with speed on intervals
    */
-  animate() {
+  idle() {
     setInterval(() => {
       let i = this.currentImage % this.IMAGES_IDLE.length;
       let path = this.IMAGES_IDLE[i];
       this.img = this.imageCache[path];
       this.currentImage++;
     }, 250);
+  }
 
+  animate() {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.x += this.speed;
