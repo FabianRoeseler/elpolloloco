@@ -2,7 +2,7 @@ class Character extends MovableObject {
   height = 270;
   y = 160;
   x = 100;
-  speed = 7;
+  speed = 10;
 
   IMAGES_IDLE = [
     "../img/2_character_pepe/1_idle/idle/I-1.png",
@@ -63,7 +63,7 @@ class Character extends MovableObject {
         this.currentImage++;
         this.world.camera_x = -this.x + 100;
       }
-    }, 1000 / 45);
+    }, 1000 / 20);
 
     setInterval(() => {
       if (this.world.keyboard.LEFT && this.x > 100) {
@@ -77,7 +77,7 @@ class Character extends MovableObject {
         this.currentImage++;
         this.world.camera_x = -this.x + 100;
       }
-    }, 1000 / 45);
+    }, 1000 / 20);
   }
 
   jump() {}
