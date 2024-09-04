@@ -25,6 +25,18 @@ class Character extends MovableObject {
     "img/2_character_pepe/2_walk/W-25.png",
     "img/2_character_pepe/2_walk/W-26.png",
   ];
+
+  IMAGES_JUMPING = [
+    "img/2_character_pepe/3_jump/J-31.png",
+    "img/2_character_pepe/3_jump/J-32.png",
+    "img/2_character_pepe/3_jump/J-33.png",
+    "img/2_character_pepe/3_jump/J-34.png",
+    "img/2_character_pepe/3_jump/J-35.png",
+    "img/2_character_pepe/3_jump/J-36.png",
+    "img/2_character_pepe/3_jump/J-37.png",
+    "img/2_character_pepe/3_jump/J-38.png",
+    "img/2_character_pepe/3_jump/J-39.png",
+  ];
   world;
   walking_sound = new Audio("../audio/walk.mp3");
 
@@ -32,6 +44,7 @@ class Character extends MovableObject {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_WALKING);
+    this.loadImages(this.IMAGES_JUMPING);
     this.animate();
     this.applyGravity();
     this.idle();
@@ -53,16 +66,23 @@ class Character extends MovableObject {
   animate() {
     setInterval(() => {
       this.walking_sound.pause();
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-        this.x += this.speed;
-        this.otherDirection = false;
-        this.walking_sound.play();
+      if (this.isAboveGround()) {
+        this.playAnimation(this.IMAGES_JUMPING);
+      } else {
+        if (
+          this.world.keyboard.RIGHT &&
+          this.x < this.world.level.level_end_x
+        ) {
+          this.x += this.speed;
+          this.otherDirection = false;
+          this.walking_sound.play();
 
-        let i = this.currentImage % this.IMAGES_WALKING.length;
-        let path = this.IMAGES_WALKING[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-        this.world.camera_x = -this.x + 100;
+          let i = this.currentImage % this.IMAGES_WALKING.length;
+          let path = this.IMAGES_WALKING[i];
+          this.img = this.imageCache[path];
+          this.currentImage++;
+          this.world.camera_x = -this.x + 100;
+        }
       }
     }, 1000 / 20);
 
@@ -81,5 +101,9 @@ class Character extends MovableObject {
     }, 1000 / 20);
   }
 
-  jump() {}
+  jump() {
+    if (this.world.keyboard.UP) {
+      this.speedY = 20;
+    }
+  }
 }
