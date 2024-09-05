@@ -2,6 +2,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("/img/pollobg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+
+.title {
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 canvas {
