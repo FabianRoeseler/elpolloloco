@@ -11,7 +11,7 @@ class Chickenbaby extends MovableObject {
     this.loadImages(this.IMAGES_WALKING);
 
     this.x = 300 + Math.random() * 2600;
-    this.y = 340;
+    this.y = 380 + Math.random() * 20;
     this.speed = 0.15 + Math.random() * 0.5;
     this.animate();
   }

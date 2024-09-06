@@ -17,14 +17,14 @@ class DrawableObject {
   }
 
   drawFrame(ctx) {
-    /*     if (this instanceof Character || this instanceof Chicken) { */
-    ctx.beginPath();
-    ctx.lineWidth = "2";
-    ctx.strokeStyle = "black";
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.stroke();
+    if (this instanceof Character || this instanceof Chicken) {
+      ctx.beginPath();
+      ctx.lineWidth = "2";
+      ctx.strokeStyle = "black";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
   }
-  /*   } */
 
   loadImages(arr) {
     arr.forEach((path) => {
