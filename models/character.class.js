@@ -55,6 +55,7 @@ class Character extends MovableObject {
 
   world;
   walking_sound = new Audio("../audio/walk.mp3");
+  hitHurt = new Audio("../audio/hitHurt.wav");
 
   constructor() {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
@@ -112,6 +113,7 @@ class Character extends MovableObject {
         this.speedY = 200;
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
+        this.hitHurt.play();
       } else if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
       } else {
