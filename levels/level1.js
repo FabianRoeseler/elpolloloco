@@ -1,6 +1,7 @@
 let level1;
 
 function initLevel() {
+  document.getElementById("loseScreen").style.display = "none";
   level1 = new Level(
     [
       new Chickenbaby(),

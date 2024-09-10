@@ -9,6 +9,10 @@ function init() {
   document.getElementById("startScreen").style.display = "none";
 }
 
+function startGameLater() {
+  location.reload();
+}
+
 function startGame() {
   initLevel();
   init();
