@@ -16,6 +16,19 @@ class Character extends MovableObject {
     "../img/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
+  IMAGES_LONGIDLE = [
+    "../img/2_character_pepe/1_idle/long_idle/I-11.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-12.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-13.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-14.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-15.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-16.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-17.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-18.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-19.png",
+    "../img/2_character_pepe/1_idle/long_idle/I-20.png",
+  ];
+
   IMAGES_WALKING = [
     "img/2_character_pepe/2_walk/W-21.png",
     "img/2_character_pepe/2_walk/W-22.png",
@@ -66,6 +79,7 @@ class Character extends MovableObject {
   constructor() {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGES_IDLE);
+    this.loadImages(this.IMAGES_LONGIDLE);
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_HURT);
@@ -85,7 +99,34 @@ class Character extends MovableObject {
       let path = this.IMAGES_IDLE[i];
       this.img = this.imageCache[path];
       this.currentImage++;
+      this.checkIdle();
     }, 500);
+  }
+
+  longIdle() {
+    setInterval(() => {
+      let i = this.currentImage % this.IMAGES_LONGIDLE.length;
+      let path = this.IMAGES_LONGIDLE[i];
+      this.img = this.imageCache[path];
+      this.currentImage++;
+    }, 500);
+  }
+
+  checkIdle() {
+    this.idleTimer = null;
+    this.idleTime = 1500;
+    this.startIdleTimer();
+  }
+
+  startIdleTimer() {
+    this.idleTimer = setTimeout(() => {
+      this.longIdle();
+    }, this.idleTime);
+  }
+
+  resetIdleTimer() {
+    clearTimeout(this.idleTimer);
+    this.startIdleTimer();
   }
 
   animate() {
@@ -95,12 +136,14 @@ class Character extends MovableObject {
         this.moveRight();
         this.otherDirection = false;
         this.walking_sound.play();
+        this.resetIdleTimer();
       }
 
       if (this.world.keyboard.LEFT && this.x > 100) {
         this.moveLeft();
         this.otherDirection = true;
         this.walking_sound.play();
+        this.resetIdleTimer();
       }
 
       if (
@@ -108,6 +151,7 @@ class Character extends MovableObject {
         !this.isAboveGround()
       ) {
         this.jump();
+        this.resetIdleTimer();
       }
 
       this.world.camera_x = -this.x + 100;
