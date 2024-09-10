@@ -47,6 +47,17 @@ class World {
     });
   }
 
+  // check if enemies are jumped on and kill them. character doesnt get damaged
+  checkCollisionFromAbove() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+        setTimeout(() => {
+          this.character.hit();
+        }, 1500);
+      }
+    });
+  }
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
