@@ -1,3 +1,8 @@
+@font-face {
+  font-family: mexicanFont;
+  src: url(fonts/Mexicana.ttf);
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -5,19 +10,63 @@ body {
   background-image: url("/img/pollobg.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center; 
+  background-position: center;
+  font-family: "mexicanFont", Arial, Helvetica, sans-serif;
 }
 
-@font-face {
-  font-family: mexicanFont;
-  src: url(fonts/Mexicana.ttf);
-}
+
 
 .title {
- font-family: mexicanFont;
  font-size: 4vw;
+ text-shadow: 4px 4px 18px rgba(0, 0, 0, 0.7);
 }
 
 canvas {
   background-color: black;
+  display: block;
 }
+
+/* .defeatScreen {
+  background-image: url('./img/11_WinDefeat/defeatScreen.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 820px;
+  height: 480px;
+}
+
+.winScreen {
+  background-image: url('./img/11_WinDefeat/winScreen.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 820px;
+  height: 480px;
+}
+
+.startScreen {
+  background-image: url('./img/11_WinDefeat/startScreen.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 820px;
+  height: 480px;
+} */
+
+@media only screen and (max-width: 720px) {
+  canvas {
+    width: 100%;
+  }
+}
+
+  @media only screen and (max-height: 480px) {
+    canvas {
+      height: 100vh;
+    }
+    .title {
+      display: none;
+    }
+  }
