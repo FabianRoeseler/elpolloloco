@@ -9,6 +9,11 @@ function init() {
   document.getElementById("startScreen").style.display = "none";
 }
 
+function startGame() {
+  initLevel();
+  init();
+}
+
 /**
  * Keyboard bindings: true when pressed down, false when let up
  */
