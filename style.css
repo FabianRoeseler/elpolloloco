@@ -15,8 +15,6 @@ body {
   font-family: "mexicanFont", Arial, Helvetica, sans-serif;
 }
 
-
-
 .title {
  font-size: 4vw;
  text-shadow: 4px 4px 18px rgba(0, 0, 0, 0.7);
@@ -29,12 +27,15 @@ canvas {
 }
 
 .canvasContainer {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .loseScreen {
   background-image: url("./img/9_intro_outro_screens/game_over/game over.png");
-  background-size: contain;
+  background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
@@ -46,7 +47,7 @@ canvas {
 
 .winScreen {
   background-image: url("./img/9_intro_outro_screens/win/won_2.png");
-  background-size: contain;
+  background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
@@ -58,13 +59,14 @@ canvas {
 
 .startScreen {
   background-image: url("./img/9_intro_outro_screens/start/startscreen_2.png");
-  background-size: contain;
+  background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   width: 720px;
   height: 480px;
   z-index: 4;
+  display: block;
 }
 
 @media only screen and (max-width: 720px) {

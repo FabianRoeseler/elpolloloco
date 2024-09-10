@@ -57,6 +57,12 @@ class Character extends MovableObject {
   walking_sound = new Audio("../audio/walk.mp3");
   hitHurt = new Audio("../audio/hitHurt.wav");
 
+  loseGame() {
+    this.playAnimation(this.IMAGES_DEAD);
+    this.speedY = 200;
+    document.getElementById("loseScreen").style.display = "block";
+  }
+
   constructor() {
     super().loadImage("../img/2_character_pepe/1_idle/idle/I-1.png");
     this.loadImages(this.IMAGES_IDLE);
@@ -109,8 +115,7 @@ class Character extends MovableObject {
 
     setInterval(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        this.speedY = 200;
+        this.loseGame();
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
         this.hitHurt.play();
