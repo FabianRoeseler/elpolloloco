@@ -21,13 +21,17 @@
     <script src="models/endboss.class.js"></script>
     <script src="levels/level1.js"></script>
   </head>
-  <body onload="init()">
+  <body>
     <h1 class="title">E l - p o l l o - l o c o</h1>
-    <div id="canvasContainer">
+
+    <div id="canvasContainer" class="canvasContainer">
+      <div id="loseScreen" class="loseScreen"></div>
+
+      <div id="winScreen" class="winScreen"></div>
+
+      <div id="startScreen" class="startScreen" onclick="init()"></div>
+
       <canvas id="canvas" width="720" height="480"> </canvas>
-      <div class="loseScreen"></div>
-      <div class="winScreen"></div>
-      <div class="startScreen"></div>
     </div>
     <script src="js/game.js"></script>
   </body>
