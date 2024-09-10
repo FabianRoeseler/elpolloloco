@@ -94,17 +94,22 @@ class Character extends MovableObject {
    * Walking sound start and end
    */
   idle() {
-    setInterval(() => {
+    clearInterval(this.idleInterval);
+    clearTimeout(this.longIdleTimeout);
+    this.idleInterval = setInterval(() => {
       let i = this.currentImage % this.IMAGES_IDLE.length;
       let path = this.IMAGES_IDLE[i];
       this.img = this.imageCache[path];
       this.currentImage++;
-      this.checkIdle();
     }, 500);
+    this.longIdleTimeout = setTimeout(() => {
+      this.longIdle();
+    }, 2000);
   }
 
   longIdle() {
-    setInterval(() => {
+    clearInterval(this.idleInterval);
+    this.longIdleInterval = setInterval(() => {
       let i = this.currentImage % this.IMAGES_LONGIDLE.length;
       let path = this.IMAGES_LONGIDLE[i];
       this.img = this.imageCache[path];
@@ -112,21 +117,11 @@ class Character extends MovableObject {
     }, 500);
   }
 
-  checkIdle() {
-    this.idleTimer = null;
-    this.idleTime = 1500;
-    this.startIdleTimer();
-  }
-
-  startIdleTimer() {
-    this.idleTimer = setTimeout(() => {
-      this.longIdle();
-    }, this.idleTime);
-  }
-
-  resetIdleTimer() {
-    clearTimeout(this.idleTimer);
-    this.startIdleTimer();
+  resetIdle() {
+    clearInterval(this.idleInterval);
+    clearInterval(this.longIdleInterval);
+    clearTimeout(this.longIdleTimeout);
+    this.idle();
   }
 
   animate() {
@@ -136,14 +131,14 @@ class Character extends MovableObject {
         this.moveRight();
         this.otherDirection = false;
         this.walking_sound.play();
-        this.resetIdleTimer();
+        this.resetIdle();
       }
 
       if (this.world.keyboard.LEFT && this.x > 100) {
         this.moveLeft();
         this.otherDirection = true;
         this.walking_sound.play();
-        this.resetIdleTimer();
+        this.resetIdle();
       }
 
       if (
@@ -151,7 +146,7 @@ class Character extends MovableObject {
         !this.isAboveGround()
       ) {
         this.jump();
-        this.resetIdleTimer();
+        this.resetIdle();
       }
 
       this.world.camera_x = -this.x + 100;
