@@ -2,6 +2,7 @@ class Character extends MovableObject {
   height = 250;
   y = 80;
   speed = 10;
+  pickedUp = false;
 
   IMAGES_IDLE = [
     "../img/2_character_pepe/1_idle/idle/I-1.png",
@@ -126,6 +127,35 @@ class Character extends MovableObject {
     clearInterval(this.longIdleInterval);
     clearTimeout(this.longIdleTimeout);
     this.idle();
+  }
+
+  pickUpItems() {
+    const coin = this.world.level.coin.find((coin) => this.isColliding(coin));
+    if (coin) {
+      this.pickedUp = true;
+      return coin;
+    }
+    const salsa = this.world.level.salsa.find((salsa) =>
+      this.isColliding(salsa)
+    );
+    if (salsa) {
+      this.pickedUp = true;
+      return salsa;
+    }
+    this.pickedUp = false;
+    return null;
+  }
+
+  checkIsPickingUp() {
+    const collectedObject = this.pickUpItems();
+    if (collectedObject) {
+      this.removeObject(collectedObject);
+    }
+  }
+
+  removeObject(object) {
+    this.world.removeObjectFromCanvas(object);
+    this.pickedUp = false;
   }
 
   animate() {

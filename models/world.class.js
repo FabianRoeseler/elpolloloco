@@ -58,6 +58,7 @@ class World {
         this.character.hitCoin();
         this.statusBarCoins.setPercentage(this.character.coinsCollected);
         this.coinsound.play();
+        this.character.checkIsPickingUp();
       }
     });
 
@@ -66,8 +67,23 @@ class World {
         this.character.hitSalsa();
         this.statusBarSalsa.setPercentage(this.character.salsaCollected);
         this.bottlepop.play();
+        this.character.checkIsPickingUp();
       }
     });
+  }
+
+  removeObjectFromCanvas(object) {
+    const coinIndex = this.level.coin.indexOf(object);
+    if (coinIndex > -1) {
+      this.level.coin.splice(coinIndex, 1);
+      return;
+    }
+
+    const salsaIndex = this.level.salsa.indexOf(object);
+    if (salsaIndex > -1) {
+      this.level.salsa.splice(salsaIndex, 1);
+      return;
+    }
   }
 
   draw() {
