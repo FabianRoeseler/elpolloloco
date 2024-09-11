@@ -85,7 +85,7 @@ class Character extends MovableObject {
     setTimeout(() => {
       document.getElementById("loseScreen").style.display = "block";
     }, 500);
-    this.idle().pause();
+    this.snore.pause();
   }
 
   constructor() {
