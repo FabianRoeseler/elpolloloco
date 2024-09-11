@@ -79,8 +79,6 @@ class Character extends MovableObject {
   hitHurt = new Audio("../audio/hitHurt.wav");
   snore = new Audio("../audio/snore.mp3");
 
-  // blackout the canvas from top to down
-
   loseGame() {
     this.playAnimation(this.IMAGES_DEAD);
     this.speedY = 30;
