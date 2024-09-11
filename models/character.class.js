@@ -77,6 +77,7 @@ class Character extends MovableObject {
   world;
   walking_sound = new Audio("../audio/walk.mp3");
   hitHurt = new Audio("../audio/hitHurt.wav");
+  snore = new Audio("../audio/snore.mp3");
 
   // blackout the canvas from top to down
 
@@ -116,7 +117,10 @@ class Character extends MovableObject {
     }, 500);
     this.longIdleTimeout = setTimeout(() => {
       this.longIdle();
-    }, 2000);
+      setTimeout(() => {
+        this.snore.play();
+      }, 250);
+    }, 3500);
   }
 
   longIdle() {
