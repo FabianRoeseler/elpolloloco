@@ -26,6 +26,10 @@ canvas {
   z-index: 1;
 }
 
+.d-none {
+  display: none;
+}
+
 .canvasContainer {
   display: flex;
   align-items: center;
@@ -39,10 +43,10 @@ canvas {
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
+  display: block;
   width: 720px;
   height: 480px;
   z-index: 4;
-  display: none;
   cursor: pointer;
 }
 

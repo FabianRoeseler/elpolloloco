@@ -72,7 +72,9 @@ class Character extends MovableObject {
 
   loseGame() {
     this.playAnimation(this.IMAGES_DEAD);
-    this.speedY = 200;
+    setTimeout(() => {
+      this.speedY = 30;
+    }, 1000);
     document.getElementById("loseScreen").style.display = "block";
   }
 

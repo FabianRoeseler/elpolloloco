@@ -14,6 +14,7 @@ function startGameLater() {
 }
 
 function startGame() {
+  document.getElementById("loseScreen").classList.remove("d-none");
   initLevel();
   init();
 }
