@@ -7,6 +7,8 @@ class MovableObject extends DrawableObject {
   lastHit = 0;
   coinsCollected = 0;
   lastCoinCollected = 0;
+  salsaCollected = 0;
+  lastSalsaCollected = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -51,6 +53,15 @@ class MovableObject extends DrawableObject {
       this.coinsCollected = 100;
     } else {
       this.lastCoinCollected = new Date().getTime();
+    }
+  }
+
+  hitSalsa() {
+    this.salsaCollected += 20;
+    if (this.salsaCollected > 100) {
+      this.salsaCollected = 100;
+    } else {
+      this.lastSalsaCollected = new Date().getTime();
     }
   }
 

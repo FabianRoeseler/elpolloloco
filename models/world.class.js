@@ -12,6 +12,9 @@ class World {
   salsa = new Salsa();
   throwableObjects = [];
 
+  bottlepop = new Audio("../audio/bottlepop.mp3");
+  coinsound = new Audio("../audio/pickupCoin.wav");
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -54,6 +57,15 @@ class World {
       if (this.character.isColliding(co)) {
         this.character.hitCoin();
         this.statusBarCoins.setPercentage(this.character.coinsCollected);
+        this.coinsound.play();
+      }
+    });
+
+    this.level.salsa.forEach((bo) => {
+      if (this.character.isColliding(bo)) {
+        this.character.hitSalsa();
+        this.statusBarSalsa.setPercentage(this.character.salsaCollected);
+        this.bottlepop.play();
       }
     });
   }
