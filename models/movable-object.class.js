@@ -5,6 +5,8 @@ class MovableObject extends DrawableObject {
   acceleration = 2.5;
   energy = 100;
   lastHit = 0;
+  coinsCollected = 0;
+  lastCoinCollected = 0;
 
   applyGravity() {
     setInterval(() => {
@@ -40,6 +42,15 @@ class MovableObject extends DrawableObject {
       this.energy = 0;
     } else {
       this.lastHit = new Date().getTime();
+    }
+  }
+
+  hitCoin() {
+    this.coinsCollected += 20;
+    if (this.coinsCollected > 100) {
+      this.coinsCollected = 100;
+    } else {
+      this.lastCoinCollected = new Date().getTime();
     }
   }
 

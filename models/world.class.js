@@ -49,6 +49,13 @@ class World {
         this.statusBar.setPercentage(this.character.energy);
       }
     });
+
+    this.level.coin.forEach((co) => {
+      if (this.character.isColliding(co)) {
+        this.character.hitCoin();
+        this.statusBarCoins.setPercentage(this.character.coinsCollected);
+      }
+    });
   }
 
   draw() {
