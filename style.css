@@ -37,7 +37,13 @@ canvas {
   flex-direction: column;
 }
 
+@keyframes fadeout {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .loseScreen {
+  animation: fadeout 1.3s ease-in alternate;
   background-color: black;
   background-image: url("./img/9_intro_outro_screens/game_over/game over.png");
   background-size:cover;
