@@ -70,12 +70,14 @@ class Character extends MovableObject {
   walking_sound = new Audio("../audio/walk.mp3");
   hitHurt = new Audio("../audio/hitHurt.wav");
 
+  // blackout the canvas from top to down
+
   loseGame() {
     this.playAnimation(this.IMAGES_DEAD);
+    this.speedY = 30;
     setTimeout(() => {
-      this.speedY = 30;
-    }, 1000);
-    document.getElementById("loseScreen").style.display = "block";
+      document.getElementById("loseScreen").style.display = "block";
+    }, 500);
   }
 
   constructor() {
