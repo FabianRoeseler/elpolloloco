@@ -9,6 +9,7 @@ class World {
   statusBarCoins = new StatusBarCoins();
   statusBarSalsa = new StatusBarSalsa();
   coins = new Coins();
+  salsa = new Salsa();
   throwableObjects = [];
 
   constructor(canvas, keyboard) {
@@ -59,6 +60,7 @@ class World {
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coin);
+    this.addObjectsToMap(this.level.salsa);
     this.addObjectsToMap(this.throwableObjects);
 
     // fixed items inser here
