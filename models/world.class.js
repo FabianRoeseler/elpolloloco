@@ -12,8 +12,8 @@ class World {
   salsa = new Salsa();
   throwableObjects = [];
 
-  bottlepop = new Audio("../audio/bottlepop.mp3");
-  coinsound = new Audio("../audio/pickupCoin.wav");
+  bottlepop = new Audio("./audio/bottlepop.mp3");
+  coinsound = new Audio("./audio/pickupCoin.wav");
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
