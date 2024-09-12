@@ -44,7 +44,6 @@ class Endboss extends MovableObject {
   }
 
   animate() {
-    let i = 0;
     setInterval(() => {
       this.moveLeft();
     }, 1000 / 60);

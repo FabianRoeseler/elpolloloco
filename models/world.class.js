@@ -32,6 +32,7 @@ class World {
     setInterval(() => {
       this.checkCollisions();
       this.checkThrowObjects();
+      this.checkCollisionJumpOnEnemy();
     }, 200);
   }
 
@@ -68,6 +69,19 @@ class World {
         this.statusBarSalsa.setPercentage(this.character.salsaCollected);
         this.bottlepop.play();
         this.character.checkIsPickingUp();
+      }
+    });
+  }
+
+  checkCollisionJumpOnEnemy() {
+    this.level.enemies.forEach((enemy, index) => {
+      if (this.character.isColliding(enemy) && this.character.isAboveGround()) {
+        this.character.jump();
+        this.character.energy += 20;
+        enemy.isChickenDead = true;
+        setTimeout(() => {
+          this.level.enemies.splice(index, 1);
+        }, 500);
       }
     });
   }
