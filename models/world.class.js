@@ -33,7 +33,7 @@ class World {
       this.checkCollisions();
       this.checkThrowObjects();
       this.checkCollisionJumpOnEnemy();
-    }, 200);
+    }, 50);
   }
 
   checkThrowObjects() {
@@ -159,7 +159,7 @@ class World {
     }
 
     mo.draw(this.ctx);
-    /*     mo.drawFrame(this.ctx); */ // adding hitbox frame
+    mo.drawFrame(this.ctx); // adding hitbox frame
 
     if (mo.otherDirection) {
       this.flipImageBack(mo);

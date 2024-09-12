@@ -14,6 +14,7 @@ function initLevel() {
       new Chickenbaby(),
       new Chicken(),
       new Chicken(),
+      new Chicken(),*/
       new Chicken(),
       new Chicken(),
       new Chicken(),
@@ -22,7 +23,6 @@ function initLevel() {
       new Chicken(),
       new Chicken(),
       new Chicken(),
-      new Chicken(), */
       new Chicken(),
       new Endboss(),
     ],

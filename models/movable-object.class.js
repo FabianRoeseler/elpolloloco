@@ -68,7 +68,7 @@ class MovableObject extends DrawableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit;
     timepassed = timepassed / 1000; // change to seconds
-    return timepassed < 0.3;
+    return timepassed < 0.5;
   }
 
   isDead() {
@@ -91,6 +91,9 @@ class MovableObject extends DrawableObject {
   }
 
   jump() {
+    const now = new Date().getTime();
+    if (this.isAboveGround() && now - this.lastHit > 500) {
+    }
     this.speedY = 25;
   }
 }
