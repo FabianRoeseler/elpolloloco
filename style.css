@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("/img/pollobg.webp");
+  background-image: url("../img/pollobg.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

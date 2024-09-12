@@ -5,16 +5,10 @@ function initLevel() {
   level1 = new Level(
     [
       new Chickenbaby(),
-      /*       new Chickenbaby(),
       new Chickenbaby(),
       new Chickenbaby(),
       new Chickenbaby(),
       new Chickenbaby(),
-      new Chickenbaby(),
-      new Chickenbaby(),
-      new Chicken(),
-      new Chicken(),
-      new Chicken(),*/
       new Chicken(),
       new Chicken(),
       new Chicken(),
